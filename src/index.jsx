@@ -1,8 +1,26 @@
 import React, { useState } from "react"
 import ReactDOM from "react-dom"
 
-function TodoItem ({ name }) {
+function TodoItem ({ name, onRemove }) {
   return ( <li>{name}</li> )
+}
+
+function TodoList () {
+  const [ items, setItems ] = useState([])
+
+  function addItem () {
+    let name = prompt()
+    setItems([ ...items, {name}])
+  }
+
+  return (
+    <>
+    <button onClick={addItem}>Add item</button>
+    <ul>
+      { items.map(item => <TodoItem name={item.name} />) }
+    </ul>
+      </>
+  )
 }
 
 function App () {
@@ -12,14 +30,7 @@ function App () {
     setCurrent(current + 1)
   }
 
-  return ( <>
-    <ul>
-      <TodoItem name={"greetings"}/>
-      <TodoItem name={"greetings"}/>
-      <TodoItem name={"greetings"}/>
-      <TodoItem name={"greetings"}/>
-    </ul>
-  </> )
+  return ( <TodoList /> )
 }
 
 ReactDOM.render(<App/>, document.getElementById("root"))
