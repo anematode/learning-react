@@ -1,4 +1,5 @@
 const path = require("path")
+const CopyWebpackPlugin = require("copy-webpack-plugin")
 
 module.exports = {
   entry: './src/index.jsx',
@@ -17,5 +18,13 @@ module.exports = {
       }
     ]
   },
-  mode: "development"
+  plugins: [
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: "public" }
+      ]
+    })
+  ],
+  mode: "development",
+  devtool: 'eval-source-map'
 }
