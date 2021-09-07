@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import ReactDOM from "react-dom"
+import styles from "./index.module.css"
 
 function TodoItem ({ name, onRemove }) {
   return ( <li>{name}</li> )
@@ -21,8 +22,9 @@ function TodoList () {
 
   return (
     <>
-    <button onClick={addItem}>Add item</button>
-      <input onChange={handleInputChange} value={eventInputName} />
+      <div className={styles.addItemDiv}>
+    <button onClick={addItem} className={styles.addItem}>Add item</button>
+      <input onChange={handleInputChange} value={eventInputName} className={styles.addItemInput} /></div>
     <ul>
       { items.map((item, i) => <TodoItem name={item.name} key={i} />) }
     </ul>

@@ -15,6 +15,19 @@ module.exports = {
         options: {
           presets: [ '@babel/preset-react' ]
         }
+      },
+      {
+        test: /\.css$/i,
+        use: [{ loader: 'style-loader' }, {
+          loader: 'css-loader',
+          options: {
+            modules: {
+              mode: "local",
+              localIdentName: '[name]_[local]_[hash:base64:5]'
+            }
+          }
+        }]
+
       }
     ]
   },

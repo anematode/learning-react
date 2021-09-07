@@ -1,0 +1,25 @@
+body {
+   font-family: "Comic Sans MS", serif;
+}
+
+.addItemDiv {
+   display: flex;
+}
+
+.addItem {
+   transition: background-color 100ms;
+
+   padding: 10px;
+   border-radius: 10px;
+   font: inherit;
+   margin-right: 10px;
+}
+
+.addItem:active {
+   background-color: gray;
+}
+
+.addItemInput {
+   border-radius: 10px;
+   font: inherit;
+}
