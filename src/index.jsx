@@ -1,6 +1,10 @@
 import React, { useState } from "react"
 import ReactDOM from "react-dom"
 
+function TodoItem ({ name }) {
+  return ( <li>{name}</li> )
+}
+
 function App () {
   const [ current, setCurrent ] = useState(0)
 
@@ -8,7 +12,14 @@ function App () {
     setCurrent(current + 1)
   }
 
-  return ( <> <p>{current}</p> <button onClick={handleClick}>Click</button> </> )
+  return ( <>
+    <ul>
+      <TodoItem name={"greetings"}/>
+      <TodoItem name={"greetings"}/>
+      <TodoItem name={"greetings"}/>
+      <TodoItem name={"greetings"}/>
+    </ul>
+  </> )
 }
 
 ReactDOM.render(<App/>, document.getElementById("root"))
