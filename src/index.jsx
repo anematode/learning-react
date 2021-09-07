@@ -7,17 +7,24 @@ function TodoItem ({ name, onRemove }) {
 
 function TodoList () {
   const [ items, setItems ] = useState([])
+  const [ eventInputName, setEventInputName ] = useState("")
 
   function addItem () {
-    let name = prompt()
-    setItems([ ...items, {name}])
+    if (!eventInputName) return
+
+    setItems([ ...items, { name: eventInputName }])
+  }
+
+  function handleInputChange (event) {
+    setEventInputName(event.target.value)
   }
 
   return (
     <>
     <button onClick={addItem}>Add item</button>
+      <input onChange={handleInputChange} value={eventInputName} />
     <ul>
-      { items.map(item => <TodoItem name={item.name} />) }
+      { items.map((item, i) => <TodoItem name={item.name} key={i} />) }
     </ul>
       </>
   )
